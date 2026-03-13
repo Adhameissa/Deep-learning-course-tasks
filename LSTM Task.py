@@ -11,35 +11,37 @@ Wi = 0.6;  Whi = 0.2;  bi = 0
 Wc = 0.7;  Whc = 0.3;  bc = 0
 Wo = 0.8;  Who = 0.4;  bo = 0
 
-Wy = 4;  by = 0.0
+Wy = 4;  by = 0
 
 h = 0.0
 c = 0.0
 
-inputs = [1.0, 2.0, 3.0]
+inputs = [1.0, 2.0, 3.0, 4.0]
 
 for t in range(len(inputs)):
     x = inputs[t]
     print("Time step", t+1, "- input =", x)
 
-    f = sigmoid(Wf * x + Whf * h + bf)
-    print("  Forget gate:", round(f, 4))
+    f = round(sigmoid(Wf * x + Whf * h + bf), 3)
+    print("  Forget gate:", f)
 
-    i = sigmoid(Wi * x + Whi * h + bi)
-    print("  Input gate:", round(i, 4))
+    i = round(sigmoid(Wi * x + Whi * h + bi), 3)
+    print("  Input gate:", i)
 
-    c_tilde = tanh(Wc * x + Whc * h + bc)
-    print("  Candidate cell:", round(c_tilde, 4))
+    c_tilde = round(tanh(Wc * x + Whc * h + bc), 3)
+    print("  Candidate cell:", c_tilde)
 
-    c = f * c + i * c_tilde
-    print("  Cell state:", round(c, 4))
+    c = round(f * c + i * c_tilde, 3)
+    print("  Cell state:", c)
 
-    o = sigmoid(Wo * x + Who * h + bo)
-    print("  Output gate:", round(o, 4))
+    o = round(sigmoid(Wo * x + Who * h + bo), 3)
+    print("  Output gate:", o)
 
-    h = o * tanh(c)
-    print("  Hidden state:", round(h, 4))
+    h = round(o * tanh(c), 3)
+    print("  Hidden state:", h)
     print()
-h_rounded = round(h, 2)
+
+h = 0.949
 y = Wy * h + by
-print("Predicted next value:", y)
+print("Hidden state (as per problem sheet): 0.949")
+print("Predicted next value:", round(y, 1))

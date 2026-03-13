@@ -40,6 +40,6 @@ for t in range(len(inputs)):
     h = o * tanh(c)
     print("  Hidden state:", round(h, 4))
     print()
-
+h_rounded = round(h, 2)
 y = Wy * h + by
-print("Predicted next value:", round(y, 4))
+print("Predicted next value:", y)
